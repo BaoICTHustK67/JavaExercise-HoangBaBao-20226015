@@ -30,7 +30,7 @@ public class DigitalVideoDisc {
     private String category;
     private String director;
     private int length;
-    private double cost;
+    private float cost;
 
     public String getTitle() {
         return this.title;
@@ -48,7 +48,7 @@ public class DigitalVideoDisc {
         return this.length;
     }
 
-    public double getCost() {
+    public float getCost() {
         return this.cost;
     }
 
@@ -57,14 +57,14 @@ public class DigitalVideoDisc {
         this.title = title;
     }
 
-    public DigitalVideoDisc(String title, String category, double cost) {
+    public DigitalVideoDisc(String title, String category, float cost) {
         super();
         this.title = title;
         this.category = category;
         this.cost = cost;
     }
 
-    public DigitalVideoDisc( String title, String category, String director, double cost) {
+    public DigitalVideoDisc( String title, String category, String director, float cost) {
         super();
         this.title = title;
         this.category = category;
@@ -72,7 +72,7 @@ public class DigitalVideoDisc {
         this.director = director;
     }
 
-    public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
+    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         super();
         this.title = title;
         this.category = category;
@@ -119,8 +119,8 @@ public class Cart {
         --this.qtyOrdered;
     }
 
-    public double totalCost(){
-        double sum = 0;
+    public float totalCost(){
+        float sum = 0;
         for(int i=0; i < this.qtyOrdered; i++){
             sum += this.itemsOrdered[i].getCost(); 
         }
