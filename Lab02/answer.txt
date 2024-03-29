@@ -1,4 +1,4 @@
 You can create multiple constructor methods within a class, 
 each with a different set of parameters or same parameters. 
-This is known as constructor overriding. 
+This is known as constructor overloading or overriding. 
 The constructors can have same parameters types but different implementations
