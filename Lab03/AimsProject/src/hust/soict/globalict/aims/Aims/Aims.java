@@ -31,8 +31,24 @@ public class Aims {
 		                 case 1:
 		                	 System.out.println("Enter the title of the media you want to view");
 		                     String title = scanner.nextLine();
+		                     DigitalVideoDisc discView1;
+		                     CompactDisc discView2;
+		                     Book bookView;
 		                     if (store.returnMediaDetails(title) != null ) {
-		                    	store.viewMediaDetails(title);		                     
+		                    	 if (store.returnMediaDetails(title) instanceof DigitalVideoDisc) {
+		                    		 discView1 = (DigitalVideoDisc) store.returnMediaDetails(title); 
+		                    		 System.out.println(discView1.toString());
+			                    	}
+			                    		
+			                    	else if (store.returnMediaDetails(title) instanceof CompactDisc) {
+			                    		discView2 = (CompactDisc) store.returnMediaDetails(title); 
+			                    		System.out.println(discView2.toString());
+			                    	}
+			                    	
+				                    else if (store.returnMediaDetails(title) instanceof Book) {
+				                    	bookView = (Book) store.returnMediaDetails(title); 
+				                    	System.out.println(bookView.toString());
+				                    }		                     
 		                    	do {
 				                     mediaDetailsMenu();
 				                     choice_3 = scanner.nextInt();
@@ -129,6 +145,7 @@ public class Aims {
 		                     break;
 		                 case 4:
 		 	            	do {
+		 	            		cart.viewCart();
 		 	            		cartMenu();
 		 		        		choice_2 = scanner.nextInt();
 		 		        		scanner.nextLine();
@@ -145,10 +162,17 @@ public class Aims {
 		 			        							String title_4 = scanner.nextLine();
 		 			        							cart.filterByTitle(title_4);
 		 			        							break;
+		 			        						case 2:
+		 			        							System.out.println("Enter the id of the media you want to filter: ");
+		 			        							int id = scanner.nextInt();
+		 			        							cart.filterById(id);
+		 			        							break;
 		 			        						case 0:
 		 			        							System.out.println("Exiting...");
+		 			        							break;
 		 			        						default:
 		 			        							System.out.println("Invalid Option");
+		 			        							break;
 		 			        					}
 		 			        				} while (choice_3 != 0);
 		 			        				break;
@@ -240,6 +264,9 @@ public class Aims {
 	                String type = scanner.nextLine();
 	                
 	                if (type.compareTo("DVD") == 0) {
+	                	System.out.println("Enter the id of the DVD: ");
+	                	int id = scanner.nextInt();
+	                	scanner.nextLine();
 	                	System.out.println("Enter the title of the DVD: ");
 	                	String title = scanner.nextLine();
 	                	System.out.println("Enter the category of the DVD: ");
@@ -250,27 +277,39 @@ public class Aims {
 	                	int length = scanner.nextInt();
 	                	System.out.println("Enter the cost of the DVD: ");
 	                	float cost = scanner.nextFloat();
-	                	DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
+	                	DigitalVideoDisc dvd = new DigitalVideoDisc(id, title, category, director, length, cost);
 	                	store.addDVD(dvd);
 	                }
 	                if (type.compareTo("CD") == 0) {
+	                	System.out.println("Enter the id of the CD: ");
+	                	int id = scanner.nextInt();
+	                	scanner.nextLine();
 	                	System.out.println("Enter the title of the CD: ");
 	                	String title = scanner.nextLine();
 	                	System.out.println("Enter the category of the CD: ");
 	                	String category = scanner.nextLine();
+	                	System.out.println("Enter the director of the CD: ");
+	                	String director = scanner.nextLine();
+	                	System.out.println("Enter the artist of the CD: ");
+	                	String artist = scanner.nextLine();
+	                	System.out.println("Enter the length of the CD: ");
+	                	int length = scanner.nextInt();
 	                	System.out.println("Enter the cost of the CD: ");
 	                	float cost = scanner.nextFloat();
-	                	CompactDisc cd = new CompactDisc(title, category, cost);
+	                	CompactDisc cd = new CompactDisc(id, title, category, director,artist, length, cost);
 	                	store.addDVD(cd);
 	                }
 	                if (type.compareTo("Book") == 0) {
-	                	System.out.println("Enter the title of the DVD: ");
+	                	System.out.println("Enter the id of the Book: ");
+	                	int id = scanner.nextInt();
+	                	scanner.nextLine();
+	                	System.out.println("Enter the title of the Book: ");
 	                	String title = scanner.nextLine();
-	                	System.out.println("Enter the category of the DVD: ");
+	                	System.out.println("Enter the category of the Book: ");
 	                	String category = scanner.nextLine();
-	                	System.out.println("Enter the cost of the DVD: ");
+	                	System.out.println("Enter the cost of the Book: ");
 	                	float cost = scanner.nextFloat();
-	                	Book book = new Book(title, category, cost);
+	                	Book book = new Book(id, title, category, cost);
 	                	store.addDVD(book);
 	                }
 	                break;
@@ -353,8 +392,8 @@ public class Aims {
     public static void sortMenu() {
     	System.out.println("Options");
     	System.out.println("-----------------------");
-    	System.out.println("1. Sort by Title");
-    	System.out.println("2. Sort by Cost");
+    	System.out.println("1. Sort by Cost");
+    	System.out.println("2. Sort by Title");
     	System.out.println("0. Back");
     	System.out.println("-----------------------");
     	System.out.println("Please choose a number: 0-1-2");

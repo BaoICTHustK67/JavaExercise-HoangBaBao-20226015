@@ -31,7 +31,15 @@ public class Cart {
     public void filterByTitle(String title) {
     	for (Media m: itemsOrdered) {
     		if (m.getTitle().contains(title)) {
-    			System.out.println(m.toString());
+    			System.out.println(m.getId() + " " + m.toString());
+    		}
+    	}
+    }
+    
+    public void filterById(int id) {
+    	for (Media m: itemsOrdered) {
+    		if (m.getId() == id) {
+    			System.out.println(m.getId() + " " + m.toString());
     		}
     	}
     }
@@ -78,8 +86,9 @@ public class Cart {
     }
     
     public void viewCart() {
+    	int count = 0;
     	for (Media item:itemsOrdered ) {
-    		System.out.println(item.toString());
+    		System.out.println((count + 1) + " " +  item.toString());
     	}
     }
     

@@ -51,6 +51,16 @@ public class DigitalVideoDisc extends Disc implements Playable {
         this.length = length;
     }
     
+    public DigitalVideoDisc(int id, String title, String category, String director, int length, float cost) {
+        super();
+        this.title = title;
+        this.category = category;
+        this.cost = cost;
+        this.director = director;
+        this.length = length;
+        this.id = id;
+    }
+    
     @Override
     public String toString() {
     	return ". DVD - " + this.getTitle() + " - " +
@@ -60,9 +70,14 @@ public class DigitalVideoDisc extends Disc implements Playable {
     
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
-		System.out.println("Playing DVD: " + this.getTitle());
-		System.out.println("DVD length: " + this.getLength());
+		// TODO Auto-generated method
+		if (this.getLength() > 0 ) {
+			System.out.println("Playing DVD: " + this.getTitle());
+			System.out.println("DVD length: " + this.getLength());
+		}
+		else {
+			System.out.println("The DVD Cannot Be Played! ");
+		}
 	}
 
 }
